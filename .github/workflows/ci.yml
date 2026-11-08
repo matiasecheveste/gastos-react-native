@@ -1,0 +1,26 @@
+# Gastos personales — Matías Nicolás Echeveste Cardozo
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Versiones compatibles con el SDK de Expo
+        run: npx expo install --check
+      - run: npm run typecheck
+      - run: npx jest --ci --coverage
+      - run: npx expo export --platform web
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: dist/
+          retention-days: 7

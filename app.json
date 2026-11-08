@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Gastos",
+    "slug": "gastos-react-native",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "uy.echeveste.gastos"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "uy.echeveste.gastos"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "Gastos",
+      "shortName": "Gastos",
+      "lang": "es-UY",
+      "themeColor": "#0f766e",
+      "output": "single"
+    },
+    "description": "Registro de gastos personales con presupuesto mensual"
+  }
+}
