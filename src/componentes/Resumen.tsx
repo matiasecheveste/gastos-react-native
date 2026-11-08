@@ -59,7 +59,7 @@ export function Presupuesto({
             value={texto}
             onChangeText={setTexto}
             keyboardType="decimal-pad"
-            placeholder="Vacío para quitarlo"
+            placeholder="Vacío para quitarlo" placeholderTextColor={colores.marcador}
             autoFocus
           />
           <Pressable accessibilityRole="button" onPress={guardar} style={estilos.botonChico}>
@@ -94,7 +94,7 @@ export function PorCategoria({ resumen }: { resumen: DatosResumen }) {
         </View>
       ))}
       <Text style={estilos.etiqueta}>
-        {resumen.cantidad} gastos · promedio diario {formatearPesos(resumen.promedioDiario)}
+        {resumen.cantidad} {resumen.cantidad === 1 ? 'gasto' : 'gastos'} · promedio diario {formatearPesos(resumen.promedioDiario)}
       </Text>
     </View>
   )

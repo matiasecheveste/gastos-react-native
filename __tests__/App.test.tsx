@@ -15,7 +15,7 @@ beforeEach(async () => {
 
 async function montar() {
   const vista = await render(<App hoy={HOY} />)
-  await screen.findByText('noviembre de 2026')
+  await screen.findByText('Noviembre de 2026')
   return vista
 }
 
@@ -37,6 +37,12 @@ test('registra gastos, actualiza el total y el resumen por categoría', async ()
   expect(screen.getByText('Feria del barrio')).toBeOnTheScreen()
   expect(screen.getByLabelText('Comida 62.5 %')).toBeOnTheScreen()
   expect(screen.getByText(/2 gastos · promedio diario \$ 285,79/)).toBeOnTheScreen()
+})
+
+test('usa el singular cuando hay un solo gasto', async () => {
+  await montar()
+  await agregar('100', 'Ocio')
+  expect(screen.getByText(/^1 gasto · promedio diario/)).toBeOnTheScreen()
 })
 
 test('muestra los errores de validación', async () => {
@@ -88,7 +94,7 @@ test('navega a meses anteriores pero no a futuros', async () => {
   await montar()
   expect(screen.getByRole('button', { name: 'Mes siguiente' })).toBeDisabled()
   await fireEvent.press(screen.getByRole('button', { name: 'Mes anterior' }))
-  expect(screen.getByText('octubre de 2026')).toBeOnTheScreen()
+  expect(screen.getByText('Octubre de 2026')).toBeOnTheScreen()
   expect(screen.getByText('Alquiler')).toBeOnTheScreen()
   // En meses cerrados no se ofrece el formulario.
   expect(screen.queryByRole('button', { name: 'Agregar gasto' })).not.toBeOnTheScreen()

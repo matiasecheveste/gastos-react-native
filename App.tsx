@@ -55,7 +55,7 @@ function Pantalla({ hoy }: { hoy: string }) {
           <Text style={estilos.flecha}>‹</Text>
         </Pressable>
         <Text style={estilos.mes} accessibilityRole="header">
-          {nombreMes(mes)}
+          {mayusculaInicial(nombreMes(mes))}
         </Text>
         <Pressable
           accessibilityRole="button"
@@ -108,11 +108,22 @@ function Pantalla({ hoy }: { hoy: string }) {
   )
 }
 
+const mayusculaInicial = (texto: string) => texto.charAt(0).toUpperCase() + texto.slice(1)
+
 const estilos = StyleSheet.create({
   pantalla: { flex: 1, backgroundColor: colores.fondo },
   centro: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colores.fondo },
-  encabezado: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 12 },
-  mes: { fontSize: 20, fontWeight: '700', color: colores.texto, textTransform: 'capitalize' },
+  encabezado: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    maxWidth: 640,
+    width: '100%',
+    alignSelf: 'center',
+  },
+  mes: { fontSize: 20, fontWeight: '700', color: colores.texto },
   flecha: { fontSize: 32, color: colores.primario, paddingHorizontal: 8 },
   contenido: { padding: 16, gap: 16, paddingBottom: 96, maxWidth: 640, width: '100%', alignSelf: 'center' },
   aviso: {

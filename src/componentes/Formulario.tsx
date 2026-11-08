@@ -37,7 +37,7 @@ export function Formulario({ hoy, alAgregar }: { hoy: string; alAgregar: (g: Gas
         style={estilos.campo}
         value={monto}
         onChangeText={setMonto}
-        placeholder="$ 0,00"
+        placeholder="$ 0,00" placeholderTextColor={colores.marcador}
         keyboardType="decimal-pad"
       />
       {errores.monto && <Text style={estilos.error}>{errores.monto}</Text>}
@@ -64,11 +64,11 @@ export function Formulario({ hoy, alAgregar }: { hoy: string; alAgregar: (g: Gas
       <View style={estilos.fila}>
         <View style={{ flex: 1 }}>
           <Text style={estilos.etiqueta}>Fecha</Text>
-          <TextInput accessibilityLabel="Fecha" style={estilos.campo} value={fecha} onChangeText={setFecha} placeholder="AAAA-MM-DD" />
+          <TextInput accessibilityLabel="Fecha" style={estilos.campo} value={fecha} onChangeText={setFecha} placeholder="AAAA-MM-DD" placeholderTextColor={colores.marcador} />
         </View>
         <View style={{ flex: 2 }}>
           <Text style={estilos.etiqueta}>Nota</Text>
-          <TextInput accessibilityLabel="Nota" style={estilos.campo} value={nota} onChangeText={setNota} placeholder="Opcional" maxLength={140} />
+          <TextInput accessibilityLabel="Nota" style={estilos.campo} value={nota} onChangeText={setNota} placeholder="Opcional" placeholderTextColor={colores.marcador} maxLength={140} />
         </View>
       </View>
       {errores.fecha && <Text style={estilos.error}>{errores.fecha}</Text>}
